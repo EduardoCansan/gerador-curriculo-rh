@@ -5,7 +5,7 @@
 // =============================================
 
 define('APP_NAME', 'RH Padronizador');
-define('APP_URL', 'http://localhost/rh-padronizador/public');
+define('APP_URL', 'http://localhost/gerador-curriculo-rh/public');
 define('APP_VERSION', '1.0.0');
 define('APP_LANG', 'pt-BR');
 
