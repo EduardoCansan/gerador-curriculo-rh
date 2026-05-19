@@ -300,18 +300,6 @@ select.form-control { cursor: pointer; }
 .text-sm { font-size: .85rem; }
 .text-center { text-align: center; }
 
-/* ---- AUTH ---- */
-.auth-body { background: var(--gray-100); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-.auth-container { width: 100%; max-width: 420px; padding: 20px; }
-.auth-card { background: white; border-radius: 12px; box-shadow: var(--shadow-md); padding: 36px; }
-.auth-logo { text-align: center; margin-bottom: 28px; }
-.logo-icon { font-size: 3rem; display: block; margin-bottom: 8px; }
-.auth-logo h1 { font-size: 1.4rem; color: var(--primary); }
-.auth-logo p { color: var(--gray-400); font-size: .88rem; margin-top: 4px; }
-.auth-form { }
-.auth-footer { text-align: center; margin-top: 20px; color: var(--gray-400); font-size: .8rem; }
-.btn-block { width: 100%; justify-content: center; }
-
 /* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
     .sidebar { display: none; }

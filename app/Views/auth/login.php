@@ -1,7 +1,7 @@
 <div class="auth-container">
     <div class="auth-card">
         <div class="auth-logo">
-            <span class="logo-icon">📄</span>
+            <span class="logo-icon"></span>
             <h1><?= APP_NAME ?></h1>
             <p>Padronização inteligente de currículos</p>
         </div>
@@ -11,21 +11,29 @@
         <?php endif; ?>
 
         <form method="POST" action="<?= APP_URL ?>/login" class="auth-form">
+            
             <div class="form-group">
-                <label for="email">E-mail</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="seu@email.com"
-                    required
-                    autocomplete="email"
-                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                >
+                <label for="email" class="email">Email Address</label>
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope left-icon"></i>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="name@company.com"
+                        required
+                        autocomplete="email"
+                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                    >
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="password">Senha</label>
+            <div class="label-row">
+                <label for="password" class="password">Password</label>
+                <a href="#" class="forgot-link">Forgot?</a>
+            </div>
+            <div class="input-icon">
+                <i class="fa-solid fa-lock left-icon"></i>
                 <input
                     type="password"
                     id="password"
@@ -34,13 +42,15 @@
                     required
                     autocomplete="current-password"
                 >
+                <button type="button" class="toggle-password" onclick="togglePassword()">
+                    <i class="fa-regular fa-eye" id="eye-icon"></i>
+                </button>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">
-                Entrar no sistema
+            <button type="submit" class="sign-in-button">
+                Sign In <i class="fa-solid fa-arrow-right"></i>
             </button>
-        </form>
 
-        <p class="auth-footer">RH Padronizador v<?= APP_VERSION ?></p>
+        </form>
     </div>
 </div>
