@@ -1,6 +1,6 @@
 body {
     font-family: 'DM Sans', sans-serif;
-    background: linear-gradient(145deg, #dce8fb 0%, #edf2fc 40%, #f5f0fb 100%);
+    background: linear-gradient(145deg, #fbfdff 0%, #eef1f6 40%, #eeeaf2 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -28,26 +28,44 @@ body {
     padding: 36px; 
 }
 
-.auth-logo { 
-    text-align: center; 
-    margin-bottom: 28px; 
+.auth-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-.logo-icon { 
-    font-size: 3rem; 
-    display: block; 
-    margin-bottom: 8px; 
+.auth-logo h1 {
+    font-size: 2rem;
+    color: #373737;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.auth-logo h1 { 
-    font-size: 1.4rem; 
-    color: #1a3a5c;
-}
-
-.auth-logo p { 
+.auth-logo p {
     color: #9ca3af;
-    font-size: .88rem; 
-    margin-top: 4px; 
+    font-size: .88rem;
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    background-color: #0046a0;
+    box-shadow: 0 5px 10px 5px rgba(0, 88, 188, 0.10);
+
+}
+
+.logo-icon i {
+    font-size: 28px;
+    color: #fff;
 }
 
 .auth-form { 
@@ -166,6 +184,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background .2s;
+    box-shadow: 0 5px 10px 5px rgba(0, 88, 188, 0.10);
 }
 
 .sign-in-button:hover {
