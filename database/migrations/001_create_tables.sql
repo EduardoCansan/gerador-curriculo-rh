@@ -3,13 +3,31 @@
 --  Execute no MySQL: source migration.sql
 -- ==========================================
 
-CREATE DATABASE IF NOT EXISTS rh_padronizador
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE rh_padronizador
 
 USE rh_padronizador;
 
--- ---- TABELA DE USUÁRIOS ----
+-- NOVO BANCO DE DADOS FEITOS POR MIM (25/05/26)
+    -- ---- TABELA DE USUÁRIOS ----
+    CREATE TABLE usuarios (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(150)  NOT NULL,
+        email VARCHAR(100)  NOT NULL UNIQUE,
+        password VARCHAR(100)  NOT NULL,
+        perfil INT (1) NOT NULL DEFAULT 1
+        ativo INT (1) NOT NULL DEFAULT 1,
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NOT NULL,
+    )
+
+    -- ---- TABELA DE USUÁRIOS ----
+    CREATE TABLE cargos (
+        id_cargo INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(150)  NOT NULL,
+    )
+-- FAZER DE CURRICULOS
+-- FIM DO BANCO DE DADOS 
+
 CREATE TABLE IF NOT EXISTS usuarios (
     id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name       VARCHAR(100)  NOT NULL,
@@ -46,7 +64,7 @@ CREATE TABLE IF NOT EXISTS curriculos (
 
 -- ==========================================
 --  USUÁRIO ADMINISTRADOR PADRÃO
---  Login: admin@rh.com | Senha: admin123
+--  Login: admin@rh.com | Senha: password
 -- ==========================================
 INSERT INTO usuarios (name, email, password, perfil, ativo, created_at, updated_at)
 VALUES (
@@ -71,5 +89,16 @@ VALUES (
     NOW()
 );
 
--- Senha dos dois usuários acima: password (hash bcrypt)
+-- Exemplo Para Testes
+INSERT INTO usuarios (name, email, password, perfil, ativo, created_at, updated_at)
+VALUES (
+    'Eduardo Cansan',
+    'eduardocansann@gmail.com',
+    '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    'Admin',
+    1,
+    NOW(),
+    NOW()
+);
+
 -- TROQUE as senhas pelo painel de admin após o primeiro login!
