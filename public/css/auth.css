@@ -1,11 +1,12 @@
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif !important;
     background: linear-gradient(145deg, #fbfdff 0%, #eef1f6 40%, #eeeaf2 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    overflow: hidden;
 }
 
 .auth-body { 
@@ -13,12 +14,14 @@ body {
     display: flex; 
     align-items: center; 
     justify-content: center; 
+    margin-bottom: 100px;
 }
 
 .auth-container { 
     width: 100%; 
     max-width: 420px;
     padding: 20px; 
+    margin-bottom: 100px
 }
 
 .auth-card { 

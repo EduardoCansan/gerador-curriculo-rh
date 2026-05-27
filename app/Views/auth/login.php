@@ -3,7 +3,7 @@
         <div class="logo-icon">
             <i class="fa-solid fa-file-zipper"></i>
         </div>
-        <h1>Resume Sync Pro</h1>
+        <h1>Resume Flow</h1>
         <p>Optimize your talent pipeline</p>
     </div>
     <div class="auth-card">
