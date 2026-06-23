@@ -1,10 +1,10 @@
+<div class="auth-logo">
+    <span class="logo-icon">📄</span>
+    <h1><?= APP_NAME ?></h1>
+    <p>Padronização inteligente de currículos</p>
+</div>
 <div class="auth-container">
-    <div class="auth-card">
-        <div class="auth-logo">
-            <span class="logo-icon">📄</span>
-            <h1><?= APP_NAME ?></h1>
-            <p>Padronização inteligente de currículos</p>
-        </div>
+    <div class="auth-card"> 
 
         <?php if ($error): ?>
             <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
