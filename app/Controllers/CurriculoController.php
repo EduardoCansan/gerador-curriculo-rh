@@ -273,39 +273,54 @@ class CurriculoController extends Controller
     private function handleUpload(): array
     {
         if (!isset($_FILES['arquivo']) || $_FILES['arquivo']['error'] !== UPLOAD_ERR_OK) {
-            return ['error' => 'Falha no upload do arquivo.'];
+            $erros = [
+                UPLOAD_ERR_INI_SIZE   => 'Arquivo maior que o permitido pelo servidor.',
+                UPLOAD_ERR_FORM_SIZE  => 'Arquivo maior que o permitido pelo formulário.',
+                UPLOAD_ERR_NO_FILE    => 'Nenhum arquivo enviado.',
+            ];
+            $code = $_FILES['arquivo']['error'] ?? UPLOAD_ERR_NO_FILE;
+            return ['error' => $erros[$code] ?? 'Falha no upload do arquivo.'];
         }
 
         $file = $_FILES['arquivo'];
 
+        // Valida tamanho
         if ($file['size'] > UPLOAD_MAX_SIZE) {
             return ['error' => 'Arquivo muito grande. Máximo: 5MB.'];
         }
 
+        // Valida extensão
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if (!in_array($ext, UPLOAD_ALLOWED_EXT, true)) {
-            return ['error' => 'Tipo de arquivo não permitido. Use PDF ou DOCX.'];
+            return ['error' => 'Tipo não permitido. Use PDF ou DOCX.'];
         }
 
+        // Salva o arquivo
         $filename = uniqid('cv_', true) . '.' . $ext;
-        $dest = UPLOAD_PATH . $filename;
+        $dest     = UPLOAD_PATH . $filename;
 
         if (!move_uploaded_file($file['tmp_name'], $dest)) {
-            return ['error' => 'Não foi possível salvar o arquivo.'];
+            return ['error' => 'Não foi possível salvar o arquivo no servidor.'];
         }
 
-        // Extrai texto do PDF (requer pdftotext instalado)
-        $text = '';
-        if ($ext === 'pdf') {
-            $text = shell_exec('pdftotext ' . escapeshellarg($dest) . ' - 2>/dev/null') ?? '';
+        // Extrai o texto usando FileReader
+        try {
+            $text = FileReader::extract($dest);
+        } catch (RuntimeException $e) {
+            // Remove o arquivo se não conseguiu extrair
+            @unlink($dest);
+            return ['error' => $e->getMessage()];
         }
 
-        // Para DOCX, usa uma extração simples via zip
-        if ($ext === 'docx') {
-            $text = $this->extractDocxText($dest);
+        if (strlen($text) < 50) {
+            @unlink($dest);
+            return ['error' => 'Texto extraído muito curto. Verifique se o arquivo tem conteúdo legível.'];
         }
 
-        return ['filename' => $filename, 'text' => trim($text)];
+        return [
+            'filename' => $filename,
+            'text'     => $text,
+        ];
     }
 
     /**

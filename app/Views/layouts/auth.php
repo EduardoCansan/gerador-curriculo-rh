@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= APP_NAME ?> — Login</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="<?= APP_URL ?>/css/app.css">
+=======
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/css/auth.css">
+>>>>>>> ae6629a7d06f29157c44e1f0f14b2f15057295af
 </head>
 <body class="auth-body">
     <?= $content ?>
+
+    <script src="<?= APP_URL ?>/js/auth.js"></script>
 </body>
 </html>
